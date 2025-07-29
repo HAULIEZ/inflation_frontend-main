@@ -176,9 +176,8 @@ export default function AboutPage() {
                 <h3 className="font-semibold text-lg text-gray-800">Forecasting Models</h3>
               </div>
               <ul className="list-disc ml-5 space-y-1 text-gray-800">
-                <li>Random Forest</li>
-                <li>XGBoost(deep learning)</li>
-                <li>Ensembel (advanced ML)</li>
+                <li>Random Forest(Feature selection)</li>
+                <li>Prophets(Each feature and Main model)</li>
               </ul>
             </div>
             <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
