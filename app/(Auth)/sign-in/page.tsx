@@ -18,6 +18,7 @@ export default function SignInPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const [rememberMe, setRememberMe] = useState(false)
+  const [notImplementedMessage, setNotImplementedMessage] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -30,7 +31,7 @@ export default function SignInPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    
+
     try {
       const response = await fetch(`${base_url}/auth/signin`, {
         method: 'POST',
@@ -61,6 +62,11 @@ export default function SignInPage() {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  const handleForgotPassword = () => {
+    setNotImplementedMessage('Forgot password feature is not yet implemented. Please contact support for assistance.')
+    setTimeout(() => setNotImplementedMessage(''), 5000)
   }
 
   return (
@@ -102,6 +108,17 @@ export default function SignInPage() {
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 {successMessage}
+              </div>
+            </div>
+          )}
+
+          {notImplementedMessage && (
+            <div className="mb-4 bg-green-50 border-l-4 border-green-500 p-4 rounded">
+              <div className="flex items-center text-sm text-green-700">
+                <svg className="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                {notImplementedMessage}
               </div>
             </div>
           )}
@@ -176,9 +193,13 @@ export default function SignInPage() {
               </div>
 
               <div className="text-sm">
-                <Link href="/forgot-password" className="font-medium text-blue-600 hover:text-blue-500">
+                <button
+                  type="button"
+                  onClick={handleForgotPassword}
+                  className="font-medium text-blue-600 hover:text-blue-500"
+                >
                   Forgot password?
-                </Link>
+                </button>
               </div>
             </div>
 
