@@ -138,18 +138,12 @@ export default function HomePage() {
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
               Ready to forecast with precision?
             </h2>
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center">
               <Link
                 href="/sign-up"
                 className="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow hover:shadow-md transition-all duration-200"
               >
                 Create Free Account
-              </Link>
-              <Link
-                href="/dashboard/forecasts"
-                className="inline-flex items-center px-6 py-3 text-base font-medium text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-xl transition-all duration-200"
-              >
-                Live Demo
               </Link>
             </div>
           </section>
