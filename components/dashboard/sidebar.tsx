@@ -42,12 +42,12 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose, collapsed = false, toggleCol
     },
     {
       name: 'Forecasts',
-      href: '/dashboard/upload',
+      href: '/dashboard/Forecast',
       icon: <FiTrendingUp className="h-5 w-5" />
     },
     {
       name: 'Comparisons',
-      href: '/dashboard/analysis',
+      href: '/dashboard/comparisons',
       icon: <FiBarChart2 className="h-5 w-5" />
     },
     {
