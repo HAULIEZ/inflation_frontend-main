@@ -1,0 +1,25 @@
+name: Deploy to School Server
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build Docker image
+      run: docker build -t inflation-frontend .
+
+    - name: Save Docker image
+      run: docker save inflation-frontend > inflation-frontend.tar
+
+    - name: Upload Docker image artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: docker-image
+        path: inflation-frontend.tar
