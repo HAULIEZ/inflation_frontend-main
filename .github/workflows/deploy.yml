@@ -6,20 +6,26 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Stop existing container
+      run: docker stop inflation-frontend || true
+
+    - name: Remove existing container
+      run: docker rm inflation-frontend || true
+
+    - name: Remove existing image
+      run: docker rmi inflation-frontend || true
+
     - name: Build Docker image
       run: docker build -t inflation-frontend .
 
-    - name: Save Docker image
-      run: docker save inflation-frontend > inflation-frontend.tar
+    - name: Run Docker container
+      run: docker run -d --name inflation-frontend -p 3000:3000 --restart unless-stopped inflation-frontend
 
-    - name: Upload Docker image artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: docker-image
-        path: inflation-frontend.tar
+    - name: Show container status
+      run: docker ps | grep inflation-frontend
