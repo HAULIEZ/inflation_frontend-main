@@ -25,7 +25,7 @@ jobs:
       run: docker build -t inflation-frontend .
 
     - name: Run Docker container
-      run: docker run -d --name inflation-frontend -p 3000:3000 --restart unless-stopped inflation-frontend
+      run: docker run -d --name inflation-frontend -p 1121:3000 --restart unless-stopped inflation-frontend
 
     - name: Show container status
       run: docker ps | grep inflation-frontend
